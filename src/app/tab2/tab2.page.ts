@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { PhotoService } from "../services/photo.service";
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: "app-tab2",
+  templateUrl: "tab2.page.html",
+  styleUrls: ["tab2.page.scss"],
 })
 export class Tab2Page {
+  photos = this.photoService.photos;
 
-  constructor() {}
+  constructor(public photoService: PhotoService) {}
 
+  ngOnInit() {
+    console.log("teste");
+    this.photoService.loadSaved();
+  }
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
 }
